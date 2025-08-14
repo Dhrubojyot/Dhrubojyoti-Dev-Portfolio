@@ -1,0 +1,132 @@
+@import "../../app.scss";
+.hero {
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    background: linear-gradient(180 deg, #0c0c1d, #111132);
+    position: relative;
+
+    .wrapper{
+    max-width: 1300px;
+    height: 100%;
+    margin: auto;
+
+    .textContainer{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+
+        @include mobile{
+            height: 52%;
+            width: 100%;
+            gap: 15px;
+            align-items: center;
+            text-align: center;  
+        }
+
+        h2{
+            font-size: 30px;
+            color: #F6BE00;
+            letter-spacing: 7px;       
+        }
+
+        h1{
+            font-size: 70px;
+
+            @include mobile{
+               font-size: 32px;
+            }
+
+        }
+        .buttons{
+            button{
+                padding: 20px;
+                border: 2px solid white;
+                border-radius: 10px;
+                background-color: transparent;
+                color: white;
+                margin-right: 20px;
+                cursor: pointer;
+                font-weight: bolder;
+
+                @include mobile{
+                    padding: 18px;
+                    margin-bottom: 4%;
+                 }
+
+            }
+            button:hover{
+                background-color: white;
+                transition: 0.5s;
+                color: black;
+                
+            }
+            
+        }
+
+        img{
+        width: 50px;
+        
+           @include mobile{
+            display: none;
+         }
+        }
+    }
+    }
+    .imageContainer {
+        height: 84%; /* Decrease the height to reduce padding */
+        position: absolute;
+        top: 4%;
+        right: 0;
+        left: 63%;
+        max-width: 412px;
+        clip-path: polygon(15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%, 0% 15%);
+        background-color: #fcd555;
+        
+
+        @include mobile {
+            height: auto; /* Allow height to adjust based on content */
+            width: 60%; /* Reduce width for smaller size */
+            max-width: 260px; /* Set a smaller max-width for mobile */
+            top: unset; /* Remove top positioning */
+            bottom: 8%; /* Position at the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            clip-path: polygon(15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%, 0% 15%); /* Remove clip-path for simplicity */
+        
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                margin: 0; /* Adjusted margin-top for desktop */
+                padding: 0;
+                
+        
+                @include mobile {
+                    margin-top: -10%;
+                    margin-bottom: -3%; /* Match desktop margin-top */
+                }
+            }
+    }
+
+}
+
+    .slidingTextContainer{
+        position: absolute;
+        font-size: 50vh;
+        bottom: -79px;
+        white-space: nowrap;
+        color:#ffffff11;
+        width: 50%;
+        font-weight: bold;
+        z-index: -999;
+
+        @include mobile{
+            width: 100%;
+            height:70%;
+            bottom: 20%;
+        }
+    }
+}

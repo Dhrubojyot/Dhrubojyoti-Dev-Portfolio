@@ -1,0 +1,308 @@
+@import "../app.scss";
+
+$width: 768px;
+$mobile-width: 480px;
+
+.gallery-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  perspective: 1000px;
+
+  .gallery {
+    width: 100%;
+    background: linear-gradient(180deg, #0c0c1d, #111132);
+    position: relative;
+    padding: 80px 0;
+    z-index: 1;
+    overflow: hidden;
+    transform-style: preserve-3d;
+
+    @media (max-width: $width) {
+      padding: 30px 0;
+      height: auto;
+      min-height: 100vh;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 40%, rgba(246, 190, 0, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(246, 190, 0, 0.03) 0%, transparent 40%);
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.02;
+      pointer-events: none;
+      z-index: -1;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    .wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @media (max-width: $width) {
+        padding: 0 15px;
+        justify-content: flex-start;
+        padding-top: 0;
+      }
+
+      .header-section {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        z-index: 2;
+        backface-visibility: hidden;
+      
+        @media (max-width: $width) {
+          margin-bottom: 20px;
+          padding-top: 20px;
+        }
+      
+        h1 {
+          font-size: 64px;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          transform: translateZ(0);
+          
+          @media (max-width: $width) {
+            font-size: 38px;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+          }
+      
+          span {
+            color: #F6BE00;
+            display: inline-block;
+            position: relative;
+          }
+        }
+
+        .underline {
+          height: 3px;
+          width: 100px;
+          background: #F6BE00;
+          margin: 0 auto 20px;
+          border-radius: 2px;
+          box-shadow: 0 0 10px rgba(246, 190, 0, 0.3);
+          backface-visibility: hidden;
+
+          @media (max-width: $width) {
+            height: 2px;
+            width: 80px;
+          }
+        }
+
+        .subtitle {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 18px;
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.6;
+          backface-visibility: hidden;
+
+          @media (max-width: $width) {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .scrolling-row-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin: 15px 0;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+
+        @media (max-width: $width) {
+          margin: 10px 0;
+          
+        }
+
+        &.top-row-wrapper {
+          margin-bottom: 30px;
+
+          @media (max-width: $width) {
+            margin-bottom: 40px;
+            
+            
+          }
+          @media (max-width: $mobile-width) {
+            margin-top: 50px; // Even more space on very small devices
+             
+          }
+        }
+
+        &.bottom-row-wrapper {
+          margin-top: 30px;
+
+          @media (max-width: $width) {
+            margin-top: 40px;
+          }
+          @media (max-width: $mobile-width) {
+            margin-top: 50px; // Even more space on very small devices
+          }
+        }
+
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          width: 100px;
+          height: 100%;
+          z-index: 3;
+          pointer-events: none;
+
+          @media (max-width: $width) {
+            width: 20px;
+          }
+        }
+
+        &::before {
+          left: 0;
+          background: linear-gradient(90deg, #111132 0%, rgba(17, 17, 50, 0) 100%);
+        }
+
+        &::after {
+          right: 0;
+          background: linear-gradient(270deg, #111132 0%, rgba(17, 17, 50, 0) 100%);
+        }
+
+        .scrolling-row {
+          display: flex;
+          width: max-content;
+          gap: 20px;
+          will-change: transform;
+          backface-visibility: hidden;
+          transform-style: preserve-3d;
+
+          @media (max-width: $width) {
+            gap: 40px;
+          }
+
+          .scrolling-item {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            flex-shrink: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+
+            @media (max-width: $width) {
+              width: 80vw;
+              height: calc(80vw * 0.6);
+            }
+
+            .image-container {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              transform-style: preserve-3d;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                backface-visibility: hidden;
+                transform: translateZ(0);
+              }
+
+              .hover-info {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 20px;
+                opacity: 0;
+                transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                backface-visibility: hidden;
+                transform: translateZ(0);
+
+                @media (max-width: $width) {
+                  padding: 15px;
+                }
+
+                h3 {
+                  color: #F6BE00;
+                  font-size: 18px;
+                  margin-bottom: 10px;
+                  text-align: center;
+                  transform: translateZ(0);
+
+                  @media (max-width: $width) {
+                    font-size: 16px;
+                  }
+                }
+
+                p {
+                  color: white;
+                  font-size: 14px;
+                  text-align: center;
+                  line-height: 1.4;
+                  transform: translateZ(0);
+
+                  @media (max-width: $width) {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+
+            &:hover {
+              transform: scale(1.02);
+              z-index: 10;
+              
+              .hover-info {
+                opacity: 1;
+              }
+
+              img {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
